@@ -363,7 +363,7 @@
     {
       "parameters": {
         "authentication": "webhook",
-        "content": "=\"I sent the file using email with the label ID {{ $json.labelIds[2] }}. My ID: 7bd7296a4a6a36ab897c8272e30d7f8c\"  ",
+        "content": "=I sent the file using email with the label ID {{ $json.labelIds[2] }}.  My Unique ID: {{ $('HTTP Request').params[\"headerParameters\"][\"parameters\"][0][\"value\"] }}",
         "options": {}
       },
       "type": "n8n-nodes-base.discord",
@@ -510,6 +510,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-08-29T07:30:38.000Z",
-  "versionId": "80c9f24c-f640-4140-96e3-4aaafc738495"
+  "updatedAt": "2025-08-29T19:44:14.000Z",
+  "versionId": "d562a41d-8c9d-45e9-8bad-774c7586770e"
 }
