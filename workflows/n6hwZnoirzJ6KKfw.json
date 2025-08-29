@@ -1,0 +1,126 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "RSS Read",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RSS Read": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-08-29T03:49:12.020Z",
+  "id": "n6hwZnoirzJ6KKfw",
+  "isArchived": false,
+  "meta": null,
+  "name": "L2-LB",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "4776e3ff-acfe-4925-a371-5be170e7e911",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field called 'myNewField' to the JSON of each one\nlet urls = [\n\t{\n\t\tjson: {\n\t\turl: 'https://medium.com/feed/n8n-io'\n\t\t}\n\t},\n\t{\n\tjson: {\n\t\turl: 'https://dev.to/feed/n8n'\n\t\t} \n\t}\n]\nreturn urls;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        208,
+        0
+      ],
+      "id": "98e0e2c8-1329-470d-a308-9592065f250c",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        416,
+        0
+      ],
+      "id": "79192234-c36a-49ec-9d33-897fff5fc1b9",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.url }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        624,
+        96
+      ],
+      "id": "8a495496-a42c-4f10-96f1-78259705664a",
+      "name": "RSS Read"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-08-29T03:49:12.026Z",
+      "updatedAt": "2025-08-29T03:49:12.026Z",
+      "role": "workflow:owner",
+      "workflowId": "n6hwZnoirzJ6KKfw",
+      "projectId": "6FPie4k3QSdqcndC"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-08-29T04:00:41.000Z",
+  "versionId": "88207f47-cad0-442f-bb4c-d04e7d204b66"
+}
