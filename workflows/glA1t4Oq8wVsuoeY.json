@@ -1,0 +1,76 @@
+{
+  "active": false,
+  "connections": {
+    "Error Trigger": {
+      "main": [
+        [
+          {
+            "node": "Discord",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-08-29T07:21:26.439Z",
+  "id": "glA1t4Oq8wVsuoeY",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "L2-W3",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "a4a8afb4-ea6b-43a3-b2fa-07686187cc3a",
+      "name": "Error Trigger"
+    },
+    {
+      "parameters": {
+        "authentication": "webhook",
+        "content": "=The workflow {{ $json.workflow.name }} failed, with the error message:{{ $json.execution.error.message || \"Unknown error\" }}  . Last node executed: {{ $json.execution.lastNodeExecuted }}. Check this workflow execution here: {{ $json.execution.url }} My Unique ID7bd7296a4a6a36ab897c8272e30d7f8c\n\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.discord",
+      "typeVersion": 2,
+      "position": [
+        208,
+        0
+      ],
+      "id": "3618c637-7729-45d7-8c50-0a8ef02ab763",
+      "name": "Discord",
+      "webhookId": "c3184c14-5813-41c6-b0ea-7ae748b43c80",
+      "credentials": {
+        "discordWebhookApi": {
+          "id": "2skGqnDwEbAyPqua",
+          "name": "Discord Webhook account 2"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-08-29T07:21:26.443Z",
+      "updatedAt": "2025-08-29T07:21:26.443Z",
+      "role": "workflow:owner",
+      "workflowId": "glA1t4Oq8wVsuoeY",
+      "projectId": "6FPie4k3QSdqcndC"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-08-29T17:37:56.000Z",
+  "versionId": "6f7b91e3-f2c9-4043-a791-bf2be3c6de26"
+}
