@@ -1,0 +1,831 @@
+{
+  "active": true,
+  "connections": {
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Summarizer",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HR Expert": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HTML",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Summarizer": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Personal Info": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Qualification": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Qualification",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "Personal Info",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "Summarizer",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "HR Expert",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "Upload to google drive",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HTML1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "HR Expert",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload to google drive": {
+      "main": [
+        [
+          {
+            "node": "Get the Doc file ID",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert Word to Google Docs": {
+      "main": [
+        [
+          {
+            "node": "Read Google Docs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get the Doc file ID": {
+      "main": [
+        [
+          {
+            "node": "Convert Word to Google Docs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read Google Docs": {
+      "main": [
+        [
+          {
+            "node": "Personal Info",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Qualification",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Form": {
+      "main": [
+        []
+      ]
+    },
+    "HTML": {
+      "main": [
+        [
+          {
+            "node": "Form",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTML1": {
+      "main": [
+        [
+          {
+            "node": "Markdown",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Markdown": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "HR Expert",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-08-13T22:03:34.560Z",
+  "id": "zYNauXeEj0nCegfu",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "cd8ff33dde04e389346982f06c7f2feed2561d3ea2af8c05544f44d32c7108d4"
+  },
+  "name": "Automated_Resume_Review_System_Using_OpenAI_Google_Sheets",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "Automated Resume Review (upload the CV and paste Job description you want to apply to)",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "First name",
+              "placeholder": "First Name",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Last Name",
+              "placeholder": "Last Name",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Email",
+              "fieldType": "email",
+              "placeholder": "Email",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Resume",
+              "fieldType": "file",
+              "acceptFileTypes": "=.pdf,.docx",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Job Description",
+              "fieldType": "textarea",
+              "placeholder": "Type or paste job description",
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {
+          "appendAttribution": true,
+          "ignoreBots": true
+        }
+      },
+      "id": "f6b27d3c-df39-467d-87da-3903d34c2bbd",
+      "name": "On form submission",
+      "type": "n8n-nodes-base.formTrigger",
+      "position": [
+        112,
+        256
+      ],
+      "webhookId": "aa9adaea-3de8-4634-8b5f-63023f36f4cb",
+      "typeVersion": 2.2
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll",
+        "options": {}
+      },
+      "id": "9b8b156b-46a6-4364-b7fb-ea9f45a2a0a7",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "position": [
+        1216,
+        144
+      ],
+      "typeVersion": 3
+    },
+    {
+      "parameters": {
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"vote\": {\n      \"type\": \"string\"\n    },\n    \"consideration\": {\n      \"type\": \"string\"\n    }\n  }\n}\n"
+      },
+      "id": "ff0028a7-a363-4abf-b464-2b877bbaed99",
+      "name": "Structured Output Parser",
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "position": [
+        1904,
+        400
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "text": "={{ $json.content }}",
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"first_name\": {\n      \"type\": \"string\"\n    },\n    \"last_name\": {\n      \"type\": \"string\"\n    },\n    \"email\": {\n      \"type\": \"string\"\n    },\n    \"telephone\": {\n      \"type\": \"string\"\n    },\n    \"city\": {\n      \"type\": \"string\"\n    },\n    \"birthdate\": {\n      \"type\": \"string\"\n    },\n    \"linkedin\": {\n      \"type\": \"string\"\n    },\n    \"website\": {\n      \"type\": \"string\"\n    },\n    \"summary\": {\n      \"type\": \"string\"\n    }\n  }\n}\n",
+        "options": {}
+      },
+      "id": "a6b676c1-dad2-4fb6-9f9a-5d96fa2e0cae",
+      "name": "Personal Info",
+      "type": "@n8n/n8n-nodes-langchain.informationExtractor",
+      "position": [
+        720,
+        112
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "text": "={{ $json.content }}",
+        "attributes": {
+          "attributes": [
+            {
+              "name": "Educational Qualification",
+              "description": "Summary of your academic career. Focus on your high school and university studies. Summarize in 100 words maximum and also include your grade if applicable.",
+              "required": true
+            },
+            {
+              "name": "Job History",
+              "description": "Work history summary. Focus on your most recent work experiences. Summarize in 100 words maximum",
+              "required": true
+            },
+            {
+              "name": "Skills",
+              "description": "Extract the candidate’s technical skills. What software and frameworks they are proficient in. Make a bulleted list.",
+              "required": true
+            },
+            {
+              "name": "Certifications",
+              "description": "Extract the candidates certifications and find out expertise match with the role. Make Bulleted list",
+              "required": true
+            }
+          ]
+        },
+        "options": {
+          "systemPromptTemplate": "You are an expert extraction algorithm.\nOnly extract relevant information from the text.\nIf you do not know the value of an attribute asked to extract, you may omit the attribute's value."
+        }
+      },
+      "id": "f71cb3df-16f4-40f4-a9bc-e009710fb9e4",
+      "name": "Qualification",
+      "type": "@n8n/n8n-nodes-langchain.informationExtractor",
+      "position": [
+        736,
+        336
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Profile:{{ $json.data }}\n\nCandidate:{{ $json.response.text }}",
+        "hasOutputParser": true,
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=You are an HR expert, and your task is to determine whether a candidate aligns with the company's desired profile. You must assign a rating from 1 to 10, where 1 means the candidate does not meet the requirements, while 10 means the candidate is the perfect match for the role. Additionally, in the \"consideration\" field, explain the reasoning behind the given score."
+            }
+          ]
+        }
+      },
+      "id": "b4031568-ebd0-4a0b-b799-753d63c46149",
+      "name": "HR Expert",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "position": [
+        1824,
+        128
+      ],
+      "typeVersion": 1.5
+    },
+    {
+      "parameters": {
+        "content": "## Submission, Saving to Google Drive & Extraction\n\n**Captures user info from the form.**\n**Uploads resume to Google Drive.**\n**Extracts data from the PDF (resume).**",
+        "height": 660,
+        "width": 580
+      },
+      "id": "7a43606e-3afc-47e0-a2ab-aca456756d66",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        80,
+        -80
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Extraction (Personal Info & Qualification)\n\n**Extracts personal details (name, city, etc.).**\n**Retrieves educational qualifications and job history.**",
+        "height": 660,
+        "width": 480,
+        "color": 7
+      },
+      "id": "13aa55f9-ee4d-42a2-94dc-bbe11b3a16a0",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        672,
+        -80
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Merge & Summarization\n\n**Merges extracted information.**\n**Generates a concise professional summary.**\n\n",
+        "height": 660,
+        "width": 480,
+        "color": 5
+      },
+      "id": "ff49d527-bb2f-4774-a2da-aa66f8a6a4dc",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1168,
+        -80
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Voting, Consideration & output on the form and Google Sheets\n\n**HR expert reviews and analyzes the summary.\n\nAssigns a rating (1-10) and provides hiring insights.\n\nAppends all details to Google Sheets for record-keeping.**\n\n",
+        "height": 660,
+        "width": 768,
+        "color": 4
+      },
+      "id": "8c1192a4-96bd-473f-a8a7-a05af666aaa6",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1664,
+        -80
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "# Automated Resume Processing & Evaluation System\n\n**This workflow streamlines the process of handling resume submissions, extracting key details, summarizing qualifications, and aiding HR in the decision-making process.**\n\n## 1. Submission, Saving to Google Drive & Extraction\n**The user submits a resume via a form.\nThe system saves the uploaded file to Google Drive for record-keeping.\nAI-powered text extraction retrieves personal details, qualifications, and job history from the document.**\n\n## 2. Extraction (Personal Info & Qualification)\n**The workflow identifies and extracts key details such as the candidate’s name, contact information, and location.\nIt scans for educational background, certifications, and past work experiences.**\n\n## 3. Merge & Summarization\n**The extracted data is merged into a structured format.\nA concise summary is generated, highlighting the candidate’s most relevant qualifications and experiences.**\n\n## 4. Voting, Consideration & Output on n8n Ending Form and Google Sheets\n**HR reviews the summarized profile and assigns a rating (1-10).\nHiring insights and comments are recorded for evaluation.\nAll processed data, including extracted details and review scores, are appended to a Google Sheet for tracking and further consideration.**\n\n",
+        "height": 660,
+        "width": 980,
+        "color": 2
+      },
+      "id": "2b4482fa-e9e8-4f80-8ef4-75aa8168b69b",
+      "name": "Sticky Note4",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        672,
+        -752
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "inputDataFieldName": "Resume",
+        "name": "=Resume-{{ $now.format('yyyyLLdd') }}-{{ $json.Resume[0].filename }}",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "1PsLWQ3E5Wcvos8j05V3NHl8t9iVOtal_",
+          "mode": "list",
+          "cachedResultName": "Resume",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1PsLWQ3E5Wcvos8j05V3NHl8t9iVOtal_"
+        },
+        "options": {}
+      },
+      "id": "06898b49-d44a-42b9-9cef-356c51c83d54",
+      "name": "Upload to google drive",
+      "type": "n8n-nodes-base.googleDrive",
+      "position": [
+        224,
+        112
+      ],
+      "typeVersion": 3,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "CERA9S964u2duN6r",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {
+          "summarizationMethodAndPrompts": {
+            "values": {
+              "combineMapPrompt": "=Write a concise summary of the following:\nFirst name:{{ $json.output.first_name }}\nLast name:{{ $json.output.last_name }}\nCity: {{ $json.output.city }}\nEducational Qualification:{{ $json.output['Educational Qualification'] }}\nPrevious experience:{{ $json.output['Job History'] }}\nSkills:{{ $json.output.Skills }}\nApplied date:{{$now.format('yyyy-MM-dd')}}\n\nWrite a concise Summary and summary of 100 words or less. Be concise and professional.\nDrop the word summary from the output\n",
+              "prompt": "=Write a concise summary of the following:\nFirst name:{{ $json.output.first_name }}\nLast name:{{ $json.output.last_name }}\nCity: {{ $json.output.city }}\nEducational Qualification:{{ $json.output['Educational Qualification'] }}\nPrevious experience:{{ $json.output['Job History'] }}\nSkills:{{ $json.output.Skills }}\nApplied date:{{$now.format('yyyy-MM-dd')}}\n\nWrite a concise Summary and summary of 100 words or less. Be concise and professional. Drop the word summary from the output.\n\n"
+            }
+          }
+        }
+      },
+      "id": "0e6e39bc-db24-4b58-986e-00df00d83e05",
+      "name": "Summarizer",
+      "type": "@n8n/n8n-nodes-langchain.chainSummarization",
+      "position": [
+        1376,
+        144
+      ],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "id": "16fe47c0-78d5-4d7b-a8f7-0f9b9b94ff94",
+      "name": "OpenAI Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "position": [
+        1344,
+        464
+      ],
+      "typeVersion": 1.2,
+      "credentials": {
+        "openAiApi": {
+          "id": "fMPZmuaEJdKLb0DN",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1AzsHZWoF0o6SkRRV7JtaiHVV3cpwM1Z5xdHR7yRzGI0",
+          "mode": "list",
+          "cachedResultName": "Resume_review",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1AzsHZWoF0o6SkRRV7JtaiHVV3cpwM1Z5xdHR7yRzGI0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gid=0",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1tmg5CW1d3ZNVJ98hODs24RLGyKul98cAtVHULLNDAyU/edit#gid=0",
+          "cachedResultName": "Sheet1"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Last Name": "={{ $('Merge').item.json.output.last_name }}",
+            "First Name": "={{ $('Merge').item.json.output.first_name }}",
+            "email": "={{ $('On form submission').item.json.Email }}",
+            "consideration": "={{ $json.output.consideration }}",
+            "job description": "={{ $('Markdown').item.json.data }}",
+            "vote": "={{ $json.output.vote }}",
+            "Sno.": "="
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Sno.",
+              "displayName": "Sno.",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "First Name",
+              "displayName": "First Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Last Name",
+              "displayName": "Last Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "job description",
+              "displayName": "job description",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "vote",
+              "displayName": "vote",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "consideration",
+              "displayName": "consideration",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "id": "fe4f663e-019f-41c3-aaf3-e2418d861b77",
+      "name": "Append row in sheet",
+      "type": "n8n-nodes-base.googleSheets",
+      "position": [
+        2144,
+        128
+      ],
+      "typeVersion": 4.5,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "tUfRp0OO8Z12EXYs",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://www.googleapis.com/drive/v2/files/{{ $json.id }}/copy?convert=true&supportsAllDrives=true",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googleDriveOAuth2Api",
+        "options": {}
+      },
+      "id": "4851643d-c388-44fe-ac01-b53d82a27caa",
+      "name": "Convert Word to Google Docs",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        512,
+        112
+      ],
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "CERA9S964u2duN6r",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "fileFolder",
+        "queryString": "\".docx\"",
+        "returnAll": true,
+        "filter": {
+          "folderId": {
+            "__rl": true,
+            "value": "1PsLWQ3E5Wcvos8j05V3NHl8t9iVOtal_",
+            "mode": "list",
+            "cachedResultName": "Resume",
+            "cachedResultUrl": "https://drive.google.com/drive/folders/1PsLWQ3E5Wcvos8j05V3NHl8t9iVOtal_"
+          }
+        },
+        "options": {}
+      },
+      "id": "a0b5224c-5c07-47c2-8ce5-0330e287c1e1",
+      "name": "Get the Doc file ID",
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        368,
+        112
+      ],
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "CERA9S964u2duN6r",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "documentURL": "={{ $json.id }}"
+      },
+      "type": "n8n-nodes-base.googleDocs",
+      "typeVersion": 2,
+      "position": [
+        512,
+        320
+      ],
+      "id": "158692f6-3645-4400-bbaa-5ac178093b0c",
+      "name": "Read Google Docs",
+      "credentials": {
+        "googleDocsOAuth2Api": {
+          "id": "9139bt1Zv6g5tqPn",
+          "name": "Google Docs account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "completion",
+        "completionTitle": "HR Profile Review Feedback",
+        "completionMessage": "={{ $json.html }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.form",
+      "typeVersion": 1,
+      "position": [
+        2208,
+        352
+      ],
+      "id": "f5e0b48c-bfe3-43ef-908f-e70a063ef843",
+      "name": "Form",
+      "webhookId": "413971f9-408c-4292-b6ab-cab2cda8cec6"
+    },
+    {
+      "parameters": {
+        "html": "<!DOCTYPE html>\n\n<html>\n<head>\n  <meta charset=\"UTF-8\" />\n \n</head>\n<body>\n  <div class=\"container\">\n    <h1>Job Description</h1>{{ $('On form submission').item.json['Job Description'] }}\n    <h2>Candidate Profile Summary</h2>{{ $('Summarizer').item.json.response.text }}\n    <h2>Confidence Vote : {{ $json.output.vote }} </h2>\n     <h2>Detailed Feedback</h2>{{ $json.output.consideration }}\n  </div>\n</body>\n</html>\n\n<style>\n.container {\n  background-color: #ffffff;\n  text-align: center;\n  padding: 16px;\n  border-radius: 8px;\n}\n\nh1 {\n  color: #ff6d5a;\n  font-size: 24px;\n  font-weight: bold;\n  padding: 8px;\n}\n\nh2 {\n  color: #909399;\n  font-size: 18px;\n  font-weight: bold;\n  padding: 8px;\n}\n</style>\n\n<script>\nconsole.log(\"Hello World!\");\n</script>"
+      },
+      "type": "n8n-nodes-base.html",
+      "typeVersion": 1.2,
+      "position": [
+        2064,
+        352
+      ],
+      "id": "294b89b2-e855-49a9-881d-79f00a5ba4c5",
+      "name": "HTML"
+    },
+    {
+      "parameters": {
+        "html": "<!DOCTYPE html>\n\n<html>\n<head>\n  <meta charset=\"UTF-8\" />\n\n</head>\n<body>\n  <div class=\"container\">\n    {{ $('On form submission').item.json['Job Description'] }}\n\n  </div>\n</body>\n</html>\n\n<style>\n.container {\n  background-color: #ffffff;\n  text-align: center;\n  padding: 16px;\n  border-radius: 8px;\n}\n\nh1 {\n  color: #ff6d5a;\n  font-size: 24px;\n  font-weight: bold;\n  padding: 8px;\n}\n\nh2 {\n  color: #909399;\n  font-size: 18px;\n  font-weight: bold;\n  padding: 8px;\n}\n</style>\n\n<script>\nconsole.log(\"Hello World!\");\n</script>"
+      },
+      "type": "n8n-nodes-base.html",
+      "typeVersion": 1.2,
+      "position": [
+        256,
+        448
+      ],
+      "id": "3540d23b-124a-48c6-8fba-d365310e6f88",
+      "name": "HTML1"
+    },
+    {
+      "parameters": {
+        "html": "={{ $json.html }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.markdown",
+      "typeVersion": 1,
+      "position": [
+        464,
+        464
+      ],
+      "id": "ed667c90-7efe-435b-bff7-d8fe88ba73f8",
+      "name": "Markdown"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        1696,
+        352
+      ],
+      "id": "ac03a5c8-675b-4baa-86dd-c6f4de11f771",
+      "name": "Merge1"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-08-13T22:03:34.575Z",
+      "updatedAt": "2025-08-13T22:03:34.575Z",
+      "role": "workflow:owner",
+      "workflowId": "zYNauXeEj0nCegfu",
+      "projectId": "6FPie4k3QSdqcndC"
+    }
+  ],
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2022-10-04T20:07:25.607Z",
+      "updatedAt": "2022-10-04T20:07:25.607Z",
+      "id": "15",
+      "name": "tutorial"
+    },
+    {
+      "createdAt": "2025-07-09T21:41:38.773Z",
+      "updatedAt": "2025-07-09T21:41:38.773Z",
+      "id": "G5Lcoe2jTgqCJuSy",
+      "name": "OpenAI"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-08-14T05:59:09.000Z",
+  "versionId": "358fe82f-5d4f-434d-86df-7fa0fca2c1a4"
+}
