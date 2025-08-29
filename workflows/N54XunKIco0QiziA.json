@@ -1,0 +1,70 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Hacker News",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-08-28T20:53:56.498Z",
+  "id": "N54XunKIco0QiziA",
+  "isArchived": false,
+  "meta": null,
+  "name": "t1",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -352,
+        -32
+      ],
+      "id": "5d9bf6bc-e87e-42aa-9bc7-72141f510047",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "resource": "all",
+        "limit": 10,
+        "additionalFields": {
+          "keyword": "Automation"
+        }
+      },
+      "type": "n8n-nodes-base.hackerNews",
+      "typeVersion": 1,
+      "position": [
+        -144,
+        -32
+      ],
+      "id": "c57ea551-2220-4b06-b561-74ea51b8b3c5",
+      "name": "Hacker News",
+      "notesInFlow": true
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-08-28T20:53:56.535Z",
+      "updatedAt": "2025-08-28T20:53:56.535Z",
+      "role": "workflow:owner",
+      "workflowId": "N54XunKIco0QiziA",
+      "projectId": "6FPie4k3QSdqcndC"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-08-28T20:55:25.000Z",
+  "versionId": "31dcb5e5-8ad9-4f9c-9473-3dcc7f2cd53f"
+}
