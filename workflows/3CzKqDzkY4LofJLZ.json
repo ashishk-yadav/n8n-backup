@@ -73,6 +73,11 @@
             "node": "Convert to File",
             "type": "main",
             "index": 0
+          },
+          {
+            "node": "Discord",
+            "type": "main",
+            "index": 0
           }
         ],
         []
@@ -91,13 +96,7 @@
     },
     "Send a message": {
       "main": [
-        [
-          {
-            "node": "Discord",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Loop Over Items": {
@@ -358,19 +357,20 @@
           "id": "dAwe9bRksMPTQRMq",
           "name": "Gmail account 2"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
         "authentication": "webhook",
-        "content": "=I sent the file using email with the label ID {{ $json.labelIds[2] }}.  My Unique ID: {{ $('HTTP Request').params[\"headerParameters\"][\"parameters\"][0][\"value\"] }}",
+        "content": "=I sent the file using email with the label ID INBOX.  My Unique ID: {{ $('HTTP Request').params[\"headerParameters\"][\"parameters\"][0][\"value\"] }}",
         "options": {}
       },
       "type": "n8n-nodes-base.discord",
       "typeVersion": 2,
       "position": [
-        976,
-        -192
+        944,
+        -64
       ],
       "id": "64af4e23-4b74-45c1-bb13-42eeee20f87e",
       "name": "Discord",
@@ -510,6 +510,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-08-29T19:44:14.000Z",
-  "versionId": "d562a41d-8c9d-45e9-8bad-774c7586770e"
+  "updatedAt": "2025-08-29T20:15:24.000Z",
+  "versionId": "8fb8cf17-efbf-40b6-95f1-80b2e9808c25"
 }
