@@ -1,0 +1,76 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Discord",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-08-29T20:29:24.011Z",
+  "id": "3OGjYZL8HTm5QyF3",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "f25469b0-3214-40f1-a002-82f771c7ad30",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "authentication": "webhook",
+        "content": "=I sent the file using email with the label ID INBOX.  My Unique ID: 7bd7296a4a6a36ab897c8272e30d7f8c",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.discord",
+      "typeVersion": 2,
+      "position": [
+        208,
+        0
+      ],
+      "id": "dd441550-4631-4bbf-919d-9eabe42b2939",
+      "name": "Discord",
+      "webhookId": "f7e5ef43-c964-4c20-a8d4-8198ab024223",
+      "credentials": {
+        "discordWebhookApi": {
+          "id": "2skGqnDwEbAyPqua",
+          "name": "Discord Webhook account 2"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-08-29T20:29:24.016Z",
+      "updatedAt": "2025-08-29T20:29:24.016Z",
+      "role": "workflow:owner",
+      "workflowId": "3OGjYZL8HTm5QyF3",
+      "projectId": "6FPie4k3QSdqcndC"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-08-29T20:29:24.011Z",
+  "versionId": "1a3b294d-2c2a-46f8-8ca3-98e49529178c"
+}
