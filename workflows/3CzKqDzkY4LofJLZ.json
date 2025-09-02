@@ -73,11 +73,6 @@
             "node": "Convert to File",
             "type": "main",
             "index": 0
-          },
-          {
-            "node": "Discord",
-            "type": "main",
-            "index": 0
           }
         ],
         []
@@ -92,11 +87,6 @@
             "index": 0
           }
         ]
-      ]
-    },
-    "Send a message": {
-      "main": [
-        []
       ]
     },
     "Loop Over Items": {
@@ -149,6 +139,17 @@
         [
           {
             "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a message": {
+      "main": [
+        [
+          {
+            "node": "Discord",
             "type": "main",
             "index": 0
           }
@@ -331,59 +332,6 @@
     },
     {
       "parameters": {
-        "sendTo": "ashishk.yadavai@gmail.com",
-        "subject": "n8n-L2-W2-region report",
-        "emailType": "text",
-        "message": "tes",
-        "options": {
-          "attachmentsUi": {
-            "attachmentsBinary": [
-              {}
-            ]
-          }
-        }
-      },
-      "type": "n8n-nodes-base.gmail",
-      "typeVersion": 2.1,
-      "position": [
-        768,
-        -192
-      ],
-      "id": "e5160bdf-11ce-4001-a4a6-4ea9525b49f9",
-      "name": "Send a message",
-      "webhookId": "7ce33418-786f-4730-8720-562007bfe334",
-      "credentials": {
-        "gmailOAuth2": {
-          "id": "dAwe9bRksMPTQRMq",
-          "name": "Gmail account 2"
-        }
-      },
-      "disabled": true
-    },
-    {
-      "parameters": {
-        "authentication": "webhook",
-        "content": "=I sent the file using email with the label ID INBOX.  My Unique ID: {{ $('HTTP Request').params[\"headerParameters\"][\"parameters\"][0][\"value\"] }}",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.discord",
-      "typeVersion": 2,
-      "position": [
-        944,
-        -64
-      ],
-      "id": "64af4e23-4b74-45c1-bb13-42eeee20f87e",
-      "name": "Discord",
-      "webhookId": "4c31385d-1f88-4c2c-a78c-d172fc830e4c",
-      "credentials": {
-        "discordWebhookApi": {
-          "id": "2skGqnDwEbAyPqua",
-          "name": "Discord Webhook account 2"
-        }
-      }
-    },
-    {
-      "parameters": {
         "batchSize": 5,
         "options": {}
       },
@@ -490,13 +438,65 @@
           "name": "Discord Webhook account 2"
         }
       }
+    },
+    {
+      "parameters": {
+        "sendTo": "ashishk.yadavai@gmail.com",
+        "subject": "n8n-l2-w2-region-report",
+        "message": "test",
+        "options": {
+          "attachmentsUi": {
+            "attachmentsBinary": [
+              {
+                "property": "=data"
+              }
+            ]
+          }
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        768,
+        -192
+      ],
+      "id": "e5160bdf-11ce-4001-a4a6-4ea9525b49f9",
+      "name": "Send a message",
+      "webhookId": "7ce33418-786f-4730-8720-562007bfe334",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "dAwe9bRksMPTQRMq",
+          "name": "Gmail account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "webhook",
+        "content": "={{$json.execution?.error?.message || 'No error message'}}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.discord",
+      "typeVersion": 2,
+      "position": [
+        976,
+        -192
+      ],
+      "id": "3a1defec-22c5-491a-b266-c928ee07b8ac",
+      "name": "Discord",
+      "webhookId": "2b656b8d-8473-4171-ae39-31fce4fa2fa4",
+      "credentials": {
+        "discordWebhookApi": {
+          "id": "2skGqnDwEbAyPqua",
+          "name": "Discord Webhook account 2"
+        }
+      }
     }
   ],
   "pinData": {},
   "settings": {
     "executionOrder": "v1",
-    "callerPolicy": "workflowsFromSameOwner",
-    "errorWorkflow": "glA1t4Oq8wVsuoeY"
+    "callerPolicy": "workflowsFromSameOwner"
   },
   "shared": [
     {
@@ -510,6 +510,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-08-29T20:15:24.000Z",
-  "versionId": "8fb8cf17-efbf-40b6-95f1-80b2e9808c25"
+  "updatedAt": "2025-09-01T17:43:19.000Z",
+  "versionId": "09e2c1b2-417e-492d-bb27-e98788a3df07"
 }
