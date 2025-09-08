@@ -1,0 +1,68 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-09-08T03:58:12.373Z",
+  "id": "gyVVSrDfj5me86gJ",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "My workflow 2",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -176,
+        -48
+      ],
+      "id": "780e3b95-742a-4c7a-b16b-94aa47e5d677",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "url": "www.linkedin.com/in/ashishkyadav07",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        32,
+        -48
+      ],
+      "id": "1f2ab829-4896-47ee-95da-0ca43cc7476f",
+      "name": "HTTP Request"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-09-08T03:58:12.386Z",
+      "updatedAt": "2025-09-08T03:58:12.386Z",
+      "role": "workflow:owner",
+      "workflowId": "gyVVSrDfj5me86gJ",
+      "projectId": "6FPie4k3QSdqcndC"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-09-08T03:58:12.373Z",
+  "versionId": "2e26417e-dc9b-46df-8d88-cde0a2d058e4"
+}
